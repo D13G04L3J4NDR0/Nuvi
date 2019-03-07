@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+            
+            
+            <ui:define name="content">
+                <h:form>
+                    <h2><h:outputText value="Lista donadores" style="color: #FCD11F; font-family: 'Patrick Hand'"/></h2>
+                    <p:dataTable id="tbl" value="#{donadorControlador.listarDonadores()}" var="item" paginator="true" rowKey="#{item.idDonador}" rows="14">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="IdDonador"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDonador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="NombreDonador"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreDonador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DocuDonador"/>
+                            </f:facet>
+                            <h:outputText value="#{item.docuDonador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ContacDonador"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contacDonador}"/>
+                        </p:column>
+                        <p:column style="width: 270px">
+                            <f:facet name="header">
+                                <h:outputText value="EmailDonador"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailDonador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DireccionResidencia"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccionResidencia}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="CiudadResidencia"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ciudadResidencia}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Donaciones realizadas"/>
+                            </f:facet>
+                            
+                        </p:column>
+                    </p:dataTable>
+                    <l><strong>Descargar Excel</strong></l>
+                    <h:commandLink style="margin-left: 50px ">
+                        <p:graphicImage  id="excelDown" value="../resources/imagenes/Icono_excel.png" style="width: 35px; margin: 0px"/>
+                        <p:dataExporter type="csv" target="tbl" fileName="Donadores"/>
+                    </h:commandLink>
+                </h:form>
+                
+                    
+                    
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

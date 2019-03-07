@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+                        <div>
+                    <section id="Material">
+                        <h2>Personal Requerido</h2>
+                        <br></br>
+                            <br></br>
+                                <br></br>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            
+                                            <table id="JTable" class="table table-hover1" style="margin: auto; width:800px;" border="2" var="item" >
+                                                <thead style="background-color:rgb(3, 97, 88); color: white;">
+                                                    <th><p:outputLabel value="Profesion:" for="profesionPersonal" /></th>
+                                                    <th><p:outputLabel value="CategoriaPersonal:" for="categoriaPersonal" /></th>
+                                                    <th><p:outputLabel value="Disponibilidad:" for="disponibilidad" /></th>
+                                                    <th><p:outputLabel value="Proyecto:" for="fkProyecto" /></th>
+                                                    <th>Opciones</th>
+                                                </thead>
+                                                <tbody id="tbody">
+                                                    <tr>
+                                                        <td><p:inputText id="profesionPersonal" value="#{personalControlador.personal.profesionPersonal}" title="ProfesionPersonal" /></td>
+                                                        <td><p:inputText id="categoriaPersonal" value="#{personalControlador.personal.categoriaPersonal}" title="CategoriaPersonal" /></td>
+                                                        <td><p:inputText id="disponibilidad" value="#{personalControlador.personal.disponibilidad}" title="Disponibilidad" /></td>
+                                                        <td><p:selectOneMenu id="fkProyecto" value="#{personalControlador.proyectos.idProyecto}" >
+                                                         <f:selectItem  itemLabel="Proyectos"/>
+                                                         <f:selectItems value="#{crudProyectosControlador.listarProyecto()}" var="proyecto" itemValue="#{proyecto.codProyecto}" itemLabel="#{proyecto.codProyecto}"/><br></br>
+                                                         <f:selectItems value="#{fixme}"/>
+                                                        </p:selectOneMenu></td>
+                                                        <td>
+                           
+                                                            <h:commandButton id="btnGuardarMat" value="Guardar" action="#{crudMaterialesControlador.registrarMaterial()}" style="margin-left: 10px; background-color: #008d4c; color: #ffffff;"/>
+                                                              
+                                                            <h:commandButton id="btnEliminarMat" value="Elimnar" action="#{crudMaterialesControlador.eliminarMaterial(item)}" style="margin-left: 10px; background-color: #d33724; color: #ffffff"/>
+                               
+                                                            <h:commandButton id="btnAdicionarMat" value="Adicionar" action="#{crudMaterialesControlador.eliminarMaterial(item)}" style="margin-left: 8px; background-color: #FCD11F; color: #ffffff"/>
+                                                        </td>
+                                                        
+                                                     </tr>
+                                                </tbody>
+
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    </section>
+                                    </div>
+                                    <br></br>
+                                    <hr></hr>
+                                    <br></br>
+
+                   
+                </f:view>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{donadorControlador.listarDonadores()}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdDonador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idDonador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="NombreDonador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombreDonador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DocuDonador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.docuDonador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ContacDonador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.contacDonador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="EmailDonador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.emailDonador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DireccionResidencia"/>
+                                </f:facet>
+                                <h:outputText value="#{item.direccionResidencia}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="CiudadResidencia"/>
+                                </f:facet>
+                                <h:outputText value="#{item.ciudadResidencia}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FkTipoDocum"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkTipoDocum}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Registrar"/>
+                                </f:facet>
+                                <h:commandButton value="Editar" action="#{donadorControlador.actualizarDonador(item)}"></h:commandButton>
+                                <h:commandButton value="Eliminar" action="#{donadorControlador.eliminarDonador(item)}"></h:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                        <h:commandButton value="Registrar" action="Registrar.xhtml"></h:commandButton>
+                    </h:form>
+                    
+                    
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+
+            <ui:define name="content">
+                <div class="app-title">
+                    <div>
+                        <h3>Lista de Proyectos</h3>
+                        <p style="color: #009688">Ingrese los datos de registro de proyecto </p>
+                        <ul class="app-breadcrumb breadcrumb" style="text-align: right; ">
+                            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                            <li class="breadcrumb-item">Lista de Proyectos</li>
+                        </ul>
+                    </div>                    
+                </div>
+                <f:view>
+
+
+                    <h:form>
+                        <p:dataTable value="#{proyectosControlador.listarProyecto()}" var="item">
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Código del Proyecto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codProyecto}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombreProyecto}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha Inicio"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaInicioProyecto}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha Fin"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaFinProyecto}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Solución"/>
+                                </f:facet>
+                                <h:outputText value="#{item.solucionProyecto}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Estado"/>
+                                </f:facet>
+                                <h:outputText value="#{item.estadoProyecto}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Familia"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkFamilia.nombreCdeFamilia}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Cierre" />
+                                </f:facet> 
+                                <br></br>                                 
+                                <h:commandButton id="btnAsignarDonacion" class="est-btn-asignar" value="Seleccionar" action="#{proyectosControlador.cerrarProyecto(item)}" style=" width: 200px; height: 40px;"></h:commandButton>
+                                <br></br>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

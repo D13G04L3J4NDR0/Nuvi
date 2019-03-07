@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+            <ui:define name="content">
+                <h3>Asignación de materiales</h3>
+                <p style="color: #009688">Selecciones los materiales requeridos</p>
+                <ul class="app-breadcrumb breadcrumb" style="text-align: right">
+                    <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                    <li class="breadcrumb-item"><a href="RegistroProyecto.xhtml">Registro del proyecto</a></li>
+                    <li class="breadcrumb-item">Asignación de materiales</li>
+                </ul>
+                <div style="height: 400px">
+                    <f:view>
+                        <h:form> 
+                            <div class="col-md-12 col-sm-6 col-lg-12 panel-success">
+                                <div class="panel-heading">
+                                    <div class="panel-title"><label>Materiales Requeridos</label></div>                        
+                                </div> 
+                                <b:panel  style="margin-bottom:20px">
+                                    <div class="col-md-3 est-comp-panel">
+                                        <label for="codProyecto">Código del proyecto  :</label><br></br>
+                                        <label>#{proyectosControlador.proyectos.codProyecto}</label>
+                                    </div>
+                                    <div class="col-md-3 est-comp-panel">
+                                        <label for="fkMaterial">Material</label><br></br>
+                                        <b:selectOneMenu id="fkMaterial" value="#{proyectosControlador.materiales.idMaterial}" class="form-control" >
+                                            <f:selectItem itemLabel="Seleccionar"/>
+                                            <f:selectItems value="#{materialesControlador.listarMateriales()}" var="material" itemValue="#{material.idMaterial}" itemLabel="#{material.nombreMaterial}"/>
+                                        </b:selectOneMenu>
+                                    </div>
+                                    <div class="col-md-3 est-comp-panel">
+                                        <label for="cantidadMaterial">Cantidad</label><br></br>
+                                        <p:inputText id="cantidadMaterial" class="form-control" value="#{proyectosControlador.materialesProyecto.cantidadMaterial}" title="CantidadMaterial"/>
+                                    </div>
+                                    <div class="col-md-3 est-comp-panel">
+                                        <br></br>
+                                        <b:commandButton value="Agregar" action="#{proyectosControlador.registrarMaterialesRequeridos()}" update="tablaMateriales" class="btn-adn"><img src="../resources/imagenes/add.png"></img></b:commandButton>
+                                    </div>
+                                </b:panel>
+                            </div>
+                            
+                            <!-- Tabla de materiales-->
+                            <div class="col-md-12 col-sm-6 col-lg-12 sbForm">
+                                <h3><label>Lista de Materiales</label></h3>
+                                <p:dataTable id="tablaMateriales" value="#{proyectosControlador.listarMaterialesRequeridos()}" var="item" emptyMessage="No se encontraron datos">
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Material"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.fkMaterial.nombreMaterial}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Cantidad"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cantidadMaterial}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Medida"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.fkMaterial.unidadMedida}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+
+                                        </f:facet>
+                                        <b:commandButton action="#{materialesRequeridosControlador.eliminarMaterialRequerido(item)}" update="tablaMateriales"><img src="../resources/imagenes/boton-cancelar.png"></img></b:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                                <div class="col-md-12 est-intput">
+                                    <h:commandButton id="btnRegistrarProyecto" class="est-btn-success" value="Guardar" action="#{proyectosControlador.mostrarMensajedeRegistroProyecto()}" style=" width: 200px; height: 40px; float: right"></h:commandButton>
+                                </div>
+                            </div>
+                        </h:form>
+                    </f:view>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

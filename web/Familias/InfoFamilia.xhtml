@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+            
+            
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h2><h:outputText value="Información de Familia"/></h2>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Nombre Cabeza de Familia:" for="nombreCdeFamilia" />
+                            <h:outputText id="nombreCdeFamilia" value="#{familiaControlador.familia.nombreCdeFamilia}" title="NombreCdeFamilia" />
+                            <p:outputLabel value="Apellido Cabeza de Familia:" for="apellidoCdeFamilia" />
+                            <h:outputText id="apellidoCdeFamilia" value="#{familiaControlador.familia.apellidoCdeFamilia}" title="ApellidoCdeFamilia" />
+                            <p:outputLabel value="Fecha de la visita:" for="fechaVisita" />
+                            <h:outputText id="fechaVisita" value="#{familiaControlador.familia.fechaVisita}" title="FechaVisita" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                            <p:outputLabel value="Número de identidad:" for="documCdeFamilia" />
+                            <h:outputText id="documCdeFamilia" value="#{familiaControlador.familia.documCdeFamilia}" title="DocumCdeFamilia" />
+                            <p:outputLabel value="Integrantes:" for="integrantesFamilia" />
+                            <h:outputText id="integrantesFamilia" value="#{familiaControlador.familia.integrantesFamilia}" title="IntegrantesFamilia" />
+                            <p:outputLabel value="Barrio Familia:" for="barrioFamilia" />
+                            <h:outputText id="barrioFamilia" value="#{familiaControlador.familia.barrioFamilia}" title="BarrioFamilia" />
+                            <p:outputLabel value="Dirección :" for="direccionFamilia" />
+                            <h:outputText id="direccionFamilia" value="#{familiaControlador.familia.direccionFamilia}" title="DireccionFamilia" />
+                            <p:outputLabel value="Ciudad :" for="ciudadFamilia" />
+                            <h:outputText id="ciudadFamilia" value="#{familiaControlador.familia.ciudadFamilia}" title="CiudadFamilia" />
+                            <p:outputLabel value="Problematica identificada :" for="fkProblematica" />
+                            <h:outputText id="fkProblematica" value="#{familiaControlador.familia.fkProblematica.problematica}" title="CiudadFamilia" />
+                        </p:panelGrid>
+                    </h:form>
+                    <a href="ListaFamilia.xhtml">Regresar</a>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

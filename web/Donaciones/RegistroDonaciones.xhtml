@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                <div class="app-title">
+                    <div>
+                        <h3>Registrar Donación</h3>
+                        <p style="color: #009688">No se deben ingresas espacios vacios</p>
+                        <ul class="app-breadcrumb breadcrumb" style="text-align: right">
+                            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                            <li class="breadcrumb-item">Administrador del sistema NUVi</li>
+                            <li class="breadcrumb-item">Registrar Donación</li>
+                        </ul>
+                    </div>
+                </div>
+                <f:view>
+
+
+                    <h:form enctype="multipart/form-data">
+                        <br></br>
+                        <div class="col-md-6">
+                            <div class="col-md-12 est-intput">
+                                <label for="nombreDonador">Nombre Donador:</label><br></br>
+                                <p:inputText id="nombreDonador" value="#{donacionControlador.donador.nombreDonador}" class="form-control" title="NombreDonador" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="fkTipoDocum">Tipo de documento : </label><br></br>
+                                <h:selectOneMenu id="fkTipoDocum" class="form-control" value="#{donacionControlador.donador.fkTipoDocum}" >
+                                    <f:selectItem itemLabel="Tipo de documento"/>
+                                    <f:selectItems value="#{tipoDocumentoControlador.listarTipoDocumentos()}" var="tipo" itemValue="#{tipo.idTipoDocum}" itemLabel="#{tipo.tipoDocum}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="docuDonador">Documento de donador :</label><br></br>
+                                <p:inputText id="docuDonador" value="#{donacionControlador.donador.docuDonador}" class="form-control" title="DocuDonador" />
+                            </div>
+
+                            <div class="col-md-12 est-intput">
+                                <label for="contacDonador">Telefono : </label><br></br>
+                                <p:inputText id="contacDonador" class="form-control" value="#{donacionControlador.donador.contacDonador}" title="ContacDonador" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="emailDonador">Email : </label><br></br>
+                                <p:inputText id="emailDonador" class="form-control" value="#{donacionControlador.donador.emailDonador}" title="EmailDonador" />
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+                            <div class="col-md-12 est-intput">
+                                <label for="direccionResidencia">Dirección de residencia : </label><br></br>
+                                <p:inputText id="direccionResidencia" class="form-control" value="#{donacionControlador.donador.direccionResidencia}" title="DireccionResidencia" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="ciudadResidencia">Ciudad de residencia : </label><br></br>
+                                <p:inputText id="ciudadResidencia" class="form-control" value="#{donacionControlador.donador.ciudadResidencia}" title="CiudadResidencia" />
+                            </div>
+
+                            <div class="col-md-12 est-intput">
+                                <label for="fechaDonacion">Fecha donación :</label><br></br>
+                                <p:calendar id="fechaDonacion" value="#{donadorControlador.donaciones.fechaDonacion}" title="FechaDonacion">
+                                    <f:attribute name="fechaIngreso" value="#{proyectosControlador.proyectos.fechaInicioProyecto}" />
+                                </p:calendar>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="valorDonacion">Valor donación : </label><br></br>
+                                <p:inputText id="valorDonacion" value="#{donadorControlador.donaciones.valorDonacion}" class="form-control" title="ValorDonacion" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="imgHogar">Cargar soporte de consignación : *</label><br></br>
+                                <h:inputFile value="#{donacionControlador.file}"/><br></br>
+                            </div>
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <h:commandButton id="btnRegistrarProyecto" class="est-btn-success" value="Registrar información" action="#{donacionControlador.ingresarDonación()}" style=" width: 200px; height: 40px;"></h:commandButton>
+                        </div>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

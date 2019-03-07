@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+            
+            <ui:define name="content">
+                <div class="app-title">
+                    <div>
+                        <h3>Asignación de voluntarios</h3>
+                        <p style="color: #009688">Click en el boton Cerrar</p>
+                        <ul class="app-breadcrumb breadcrumb" style="text-align: right; ">
+                            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                            <li class="breadcrumb-item">Lista de Voluntarios</li>
+                            <li class="breadcrumb-item">Asignación de voluntarios</li>
+                        </ul>
+                    </div>                    
+                </div>
+                <f:view>
+                    <h:form>
+                        <p:growl id="growl" showDetail="true"/>
+                        <div class="row">
+                            <h2><h:outputText value="Registro personal" style="color: #FCD11F; font-family: 'Patrick Hand';"/></h2>
+                            <div class="col-md-12 col-sm-12 col-lg-12 sbForm">
+
+<div class="col-md-12 est-intput">
+                                <label for="nombreProyecto">Nombre del proyecto</label><br></br>
+                                <p:outputLabel value="Documento : " for="NDocumentoPersonal" class="estLabel"/><br/>
+                                <h:outputText id="NDocumentoPersonal" value="#{personalControlador.personal.documPersonal}" title="NDocumentoPersonal" class="estOutPut" /><br/>
+                                <p:outputLabel value="Nombres : " for="nombrePersonal" class="estLabel" /><br/>
+                                <h:outputText id="nombrePersonal" value="#{personalControlador.personal.nombrePersonal}" title="NombrePersonal" class="estOutPut"/><br/>
+                                <p:outputLabel value="Apellidos : " for="apellidoPersonal" class="estLabel"/><br/>
+                                <h:outputText id="apellidoPersonal" value="#{personalControlador.personal.apellidoPersonal}" title="ApellidoPersonal" class="estOutPut"/><br/>
+                                <p:outputLabel value="Profesión : " for="profesionPersonal" class="estLabel"/><br/>
+                                <h:outputText id="profesionPersonal" value="#{personalControlador.personal.profesionPersonal}" title="ProfesionPersonal" class="estOutPut"/><br/>
+
+
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-lg-12 sbForm">
+
+                                <p:outputLabel value="Categoria : " for="categoriaPersonal" class="estLabel"/><br/>
+                                <h:outputText id="categoriaPersonal" value="#{personalControlador.personal.categoriaPersonal}" title="CategoriaPersonal" class="estOutPut"/><br/>
+                                <p:outputLabel value="Disponible:" for="disponibilidad" class="estLabel"/><br/>
+                                <h:outputText id="disponibilidad" value="#{personalControlador.personal.disponibilidad}" title="Disponibilidad" class="estOutPut"/><br/>
+                                <p:outputLabel value="FkProyecto:" for="fkProyecto" class="estLabel"/><br/>
+                                <p:selectOneMenu id="fkProyecto" value="#{personalControlador.proyectos.idProyecto}" class="estInput"><br/>
+                                    <f:selectItem itemValue="" itemLabel="Proyecto" /><br/>
+                                    <f:selectItems value="#{proyectosControlador.listarProyecto()}" var="proyecto" itemValue="#{proyecto.idProyecto}" itemLabel="#{proyecto.nombreProyecto}"/>
+                                </p:selectOneMenu>
+                            </div>
+                        </div>
+                        <h:commandButton id="btnAsignarVoluntario" action="#{personalControlador.editarPersonal()}" value="Registrar Asignación" class="btn-success" style="padding: 15px; border-radius: 15px; width: 400px; margin-left: 400px;"></h:commandButton>
+                    </h:form>
+                </f:view>
+            </ui:define>
+            
+
+        </ui:composition>
+
+    </body>
+</html>

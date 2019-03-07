@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+
+            <ui:define name="content">
+                <div class="app-title">
+                    <div>
+                        <h3>Cierre de Proyectos</h3>
+                        <p style="color: #009688">Click en el boton Cerrar</p>
+                        <ul class="app-breadcrumb breadcrumb" style="text-align: right; ">
+                            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                            <li class="breadcrumb-item">Lista de Proyectos</li>
+                            <li class="breadcrumb-item">Cierre de Proyectos</li>
+                        </ul>
+                    </div>                    
+                </div>
+
+                <f:view>
+
+
+                    <h:form>
+                        <div class="col-md-12">
+                            <p:outputLabel value="Codigo del Proyecto:" for="codProyecto"  style="font-size: 25px; margin-left: 400px;"/>
+                            <h:outputText id="codProyecto" value="#{proyectosControlador.proyectos.codProyecto}" title="CodProyecto" style="font-size: 20px; " />
+                            <br></br>                        
+                            <br></br> 
+                        </div>
+                        <div class="col-md-6">
+
+
+
+                            <div class="col-md-12 est-intput">
+                                <label for="nombreProyecto">Nombre del proyecto</label><br></br>
+                                <h:outputText id="nombreProyecto" value="#{proyectosControlador.proyectos.nombreProyecto}" title="NombreProyecto" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="fechaInicioProyecto">Fecha de inicio del proyecto</label><br></br>
+                                <h:outputText id="fechaInicioProyecto" value="#{proyectosControlador.proyectos.fechaInicioProyecto}" title="FechaInicioProyecto" >
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="fechaFinProyecto">Fecha de fin del proyecto</label><br></br>
+                                <h:outputText id="fechaFinProyecto" value="#{proyectosControlador.proyectos.fechaFinProyecto}" title="FechaFinProyecto" >
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="costoMaterial">Costo del material</label><br></br>
+                                <p:outputLabel value="CostoMaterial:" for="costoMaterial" />
+                                <h:outputText id="costoMaterial" value="#{proyectosControlador.proyectos.costoMaterial}" title="CostoMaterial" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="costoPersonal">Costo del personal</label><br></br>
+                                <h:outputText id="costoPersonal" value="#{proyectosControlador.proyectos.costoPersonal}" title="CostoPersonal" />
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12 est-intput">
+                                <label for="costoProyecto">Costo total del proyecto</label><br></br>
+                                <h:outputText id="costoProyecto" value="#{proyectosControlador.proyectos.costoProyecto}" title="CostoProyecto" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="cantidadVoluntarios">Cantidad de voluntarios utilizados</label><br></br>
+                                <h:outputText id="cantidadVoluntarios" value="#{proyectosControlador.proyectos.cantidadVoluntarios}" title="CantidadVoluntarios" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="solucionProyecto">Solución del proyecto</label><br></br>
+                                <h:outputText id="solucionProyecto" value="#{proyectosControlador.proyectos.solucionProyecto}" title="SolucionProyecto" />
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="fkFamilia">Familia Beneficiaria</label><br></br>
+                                <h:outputText id="fkFamilia" value="#{proyectosControlador.familias.idFamilia}" title="nomFamilia" />
+                            </div>
+                        </div>
+
+
+
+
+                        <h2><h:outputText value="Archivos Adjuntos"/></h2>
+
+
+                        <h2><h:outputText value="Reportes"/></h2>
+                        <br></br>
+                        <br></br>
+                        <!--<a href="../ReportePDF/Familiaproblematica.jasper" style="margin-left: 465px">Problematica de Familia</a>-->
+                        <br></br>
+                        <br></br>
+                        <br></br>
+
+                        <h:commandButton value="Cerrar Proyecto" action="#{proyectosControlador.cierre()}" class="btn-success" style="padding: 15px; border-radius: 15px; width: 200px; margin-left: 450px; margin-top:0px"></h:commandButton>
+
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                    </h:form>
+                </f:view>
+                <br></br>
+                <br></br>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

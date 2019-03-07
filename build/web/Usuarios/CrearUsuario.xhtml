@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+            <ui:define name="content">
+                content<f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="NombreUsuario:" for="nombreUsuario" />
+                            <p:inputText id="nombreUsuario" value="#{usuariosControlador.usuarios.nombreUsuario}" title="NombreUsuario" />
+                            <p:outputLabel value="ApellidoUsuario:" for="apellidoUsuario" />
+                            <p:inputText id="apellidoUsuario" value="#{usuariosControlador.usuarios.apellidoUsuario}" title="ApellidoUsuario" />
+                            <p:outputLabel value="NDocumentoUsuario:" for="NDocumentoUsuario" />
+                            <p:inputText id="NDocumentoUsuario" value="#{usuariosControlador.usuarios.NDocumentoUsuario}" title="NDocumentoUsuario" />
+                            <p:outputLabel value="PasswordUsuario:" for="passwordUsuario" />
+                            <p:inputText id="passwordUsuario" value="#{usuariosControlador.usuarios.passwordUsuario}" title="PasswordUsuario" />
+                            <p:outputLabel value="TelefonoUsuario:" for="telefonoUsuario" />
+                            <p:inputText id="telefonoUsuario" value="#{usuariosControlador.usuarios.telefonoUsuario}" title="TelefonoUsuario" />
+                            <p:outputLabel value="CorreoElectronico:" for="correoElectronico" />
+                            <p:inputText id="correoElectronico" value="#{usuariosControlador.usuarios.correoElectronico}" title="CorreoElectronico" />
+                            <p:outputLabel value="FkTipoDocum:" for="fkTipoDocum" />
+                            <p:selectOneMenu id="fkTipoDocum" value="#{usuariosControlador.usuarios.fkTipoDocum}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+
+
+                        <h:form>
+                            <h1><h:outputText value="Create/Edit"/></h1>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="IdUsuariosRoles:" for="idUsuariosRoles" />
+                                <p:inputText id="idUsuariosRoles" value="#{usuariosControlador.usuariosRoles.idUsuariosRoles}" title="IdUsuariosRoles" required="true" requiredMessage="The IdUsuariosRoles field is required."/>
+                                <p:outputLabel value="FkUsuario:" for="fkUsuario" />
+                                <p:selectOneMenu id="fkUsuario" value="#{usuariosControlador.usuariosRoles.fkUsuario}" >
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{fixme}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="FkRol:" for="fkRol" />
+                                <p:selectOneMenu id="fkRol" value="#{usuariosControlador.usuariosRoles.fkRol}" >
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{fixme}"/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                        </h:form>
+                        
+                        
+
+                        
+                        <h:commandButton id="btnRegistrarUsuario" value="Registrar" action="#{usuariosControlador.registrarUsuario()}"/>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

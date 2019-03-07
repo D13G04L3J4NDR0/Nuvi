@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+
+            <ui:define name="content">
+               
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Actualizar Proyecto"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="NombreProyecto:" for="nombreProyecto" />
+                            <p:inputText id="nombreProyecto" value="#{proyectosControlador.proyectos.nombreProyecto}" title="NombreProyecto" />
+                            <p:outputLabel value="FechaInicioProyecto:" for="fechaInicioProyecto" />
+                            <p:inputText id="fechaInicioProyecto" value="#{proyectosControlador.proyectos.fechaInicioProyecto}" title="FechaInicioProyecto" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:outputLabel value="FechaFinProyecto:" for="fechaFinProyecto" />
+                            <p:inputText id="fechaFinProyecto" value="#{proyectosControlador.proyectos.fechaFinProyecto}" title="FechaFinProyecto" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:outputLabel value="CostoMaterial:" for="costoMaterial" />
+                            <p:inputText id="costoMaterial" value="#{proyectosControlador.proyectos.costoMaterial}" title="CostoMaterial" />
+                            <p:outputLabel value="CostoPersonal:" for="costoPersonal" />
+                            <p:inputText id="costoPersonal" value="#{proyectosControlador.proyectos.costoPersonal}" title="CostoPersonal" />
+                            <p:outputLabel value="CostoProyecto:" for="costoProyecto" />
+                            <p:inputText id="costoProyecto" value="#{proyectosControlador.proyectos.costoProyecto}" title="CostoProyecto" />
+                            <p:outputLabel value="DineroRecaudado:" for="dineroRecaudado" />
+                            <p:inputText id="dineroRecaudado" value="#{proyectosControlador.proyectos.dineroRecaudado}" title="DineroRecaudado" />
+                            <p:outputLabel value="DineroFaltante:" for="dineroFaltante" />
+                            <p:inputText id="dineroFaltante" value="#{proyectosControlador.proyectos.dineroFaltante}" title="DineroFaltante" />
+                            <p:outputLabel value="SolucionProyecto:" for="solucionProyecto" />
+                            <p:inputText id="solucionProyecto" value="#{proyectosControlador.proyectos.solucionProyecto}" title="SolucionProyecto" />
+                            
+                            
+                            <p:outputLabel value="FkFamilia:" for="fkFamilia" />
+                            <p:selectOneMenu id="fkFamilia" value="#{proyectosControlador.proyectos.fkFamilia}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                            
+                            <p:outputLabel value="FkMaterialesRequeridos:" for="fkMaterialesRequeridos" />
+                            <p:selectOneMenu id="fkMaterialesRequeridos" value="#{proyectosControlador.proyectos.fkMaterialesRequeridos}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                            
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <p:commandButton id="Actualizar" value="Actualizar" title="Actualizar" action="#{proyectosControlador.editarProyecto()}"/>
+                            <br></br>
+                            
+                            
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <link href="../resources/css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <script src="../resources/js/sweetalert.min.js" type="text/javascript"></script>
+
+    </h:head>
+
+    <body> 
+
+        <ui:composition template="../templates/template.xhtml">
+
+
+
+
+            <ui:define name="left">
+
+                <div id="left">    
+                    <link href="../resources/css/left.css" rel="stylesheet" type="text/css"/>
+
+
+                </div>
+            </ui:define>
+
+            <ui:define name="content"> 
+                <div>
+                    <h3>Registro de Familias</h3>
+                    <p style="color: #009688">Ingrese los datos de la cabeza de familia de la familia postulada</p>
+                    <ul class="app-breadcrumb breadcrumb" style="text-align: right;">
+                        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                        <li class="breadcrumb-item">Registro de familias</li>
+                    </ul>
+                </div>                    
+                <f:view>
+
+
+                    <h:form enctype="multipart/form-data">
+                        <p:growl id="growl" showDetail="true"/>                        
+                        <p>campos obligatorios *</p>
+                        <div class="col-md-12 col-sm-6 col-lg-6 sbForm">
+                            <div class="col-md-12 est-intput">
+                                <label for="fechaVisita">Fecha de la visita : *</label><br></br>
+                                <p:calendar id="fechaVisita" value="#{familiaControlador.familia.fechaVisita}" title="FechaVisita" required="true" requiredMessage=" Ingrese la fecha de Visita" /><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="nombreProyecto">Nombres : *</label><br></br>
+                                <p:inputText id="nombreCdeFamilia" class="form-control" value="#{familiaControlador.familia.nombreCdeFamilia}" title="NombreCdeFamilia" required="true" requiredMessage=" Ingrese el nombre de cabeza de famillia"/><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="apellidoCdeFamilia">Apellidos : *</label><br></br>
+                                <p:inputText id="apellidoCdeFamilia" class="form-control" value="#{familiaControlador.familia.apellidoCdeFamilia}" title="ApellidoCdeFamilia" required="true" requiredMessage=" Ingrese el apellido de cabeza de  familia"/><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="fkTipoDocum">Tipo de Documento : *</label>
+                                <h:selectOneMenu id="fkTipoDocum" class="form-control" value="#{familiaControlador.tipoDocumentos.idTipoDocum}">
+                                    <f:selectItem itemValue="" itemLabel="Seleccion"/>
+                                    <f:selectItems value="#{tipoDocumentoControlador.listarTipoDocumentos()}" var="docFmla" itemValue="#{docFmla.idTipoDocum}" itemLabel="#{docFmla.tipoDocum}"/><br></br>
+                                </h:selectOneMenu><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="documCdeFamilia">Número de Documento : *</label>
+                                <b:inputText id="documCdeFamilia" class="form-control" value="#{familiaControlador.familia.documCdeFamilia}" title="DocumCdeFamilia" required="true" requiredMessage=" Ingrese numero de documento"/><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="integrantesFamilia">Cantidad de integrantes : *</label><br></br>
+                                <p:inputText id="integrantesFamilia" class="form-control" value="#{familiaControlador.familia.integrantesFamilia}" title="IntegrantesFamilia" maxlength="2" required="true" requiredMessage=" Ingrese cantidad de voluntarios"/><br></br>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-6 col-lg-6 sbForm">
+                            <div class="col-md-12 est-intput" style="height: 55px"></div>
+                            
+                            <div class="col-md-12 est-intput">
+                                <label for="barrioFamilia">Barrio : *</label><br></br>
+                                <p:inputText id="barrioFamilia" class="form-control" value="#{familiaControlador.familia.barrioFamilia}" title="BarrioFamilia" required="true" requiredMessage=" Ingrese barrio donde habita la familia" /><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="direccionFamilia">Dirección : *</label><br></br>
+                                <p:inputText id="direccionFamilia" class="form-control" value="#{familiaControlador.familia.direccionFamilia}" title="DireccionFamilia" required="true" requiredMessage=" Ingrese direccion de familia"/><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="ciudadFamilia">Ciudad : *</label><br></br>
+                                <p:inputText id="ciudadFamilia" class="form-control" value="#{familiaControlador.familia.ciudadFamilia}" title="CiudadFamilia" required="true" requiredMessage=" Ingrese ciudad de familia" /><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="fkTipoProblematica">Tipo de problematica : *</label>
+                            <h:selectOneMenu id="fkTipoProblematica" class="form-control"  value="#{familiaControlador.problematicas.idProblematica}" >
+                                <f:selectItem itemValue="" itemLabel="Seleccion"/><br></br>
+                                <f:selectItems value="#{problematicaControlador.listarProblematicas()}" var="Problematica" itemValue="#{Problematica.idProblematica}" itemLabel="#{Problematica.problematica}"/>
+                            </h:selectOneMenu><br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                            <label for="imgHogar">Cargar fotografía : *</label><br></br>
+                            <h:inputFile value="#{familiaControlador.file}"/><br></br>
+                            </div>
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <h:commandButton id="btnRegistrarProyecto" class="est-btn-success" value="Registrar información" action="#{familiaControlador.registrarFamilia()}" style=" width: 200px; height: 40px;"></h:commandButton>
+                        </div>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,293 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+@media(min-width:768px) {
+  body {
+    margin-top: 50px;
+  }
+  /*html, body, #wrapper, #page-wrapper {height: 100%; overflow: hidden;}*/
+}
+
+#wrapper {
+  padding-left: 0;    
+}
+
+#page-wrapper {
+  width: 100%;        
+  padding: 0;
+  background-color: #fff;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 225px;
+  }
+
+  #page-wrapper {
+    padding: 22px 10px;
+  }
+}
+
+/* Top Navigation */
+
+nav {
+
+  background-color: #5c007a
+}
+
+.top-nav {
+  padding: 0 15px;
+}
+
+.top-nav>li {
+  display: inline-block;
+  float: left;
+}
+
+.top-nav>li>a {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  line-height: 20px;
+  color: #fff;
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+  color: #fff;
+  background-color: #8e24aa;
+}
+
+.top-nav>.open>.dropdown-menu {
+  float: left;
+  position: absolute;
+  margin-top: 0;
+  /*border: 1px solid rgba(0,0,0,.15);*/
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: #fff;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.top-nav>.open>.dropdown-menu>li>a {
+  white-space: normal;
+}
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+  .side-nav {
+    position: fixed;
+    top: 60px;
+    left: 225px;
+    width: 225px;
+    margin-left: -225px;
+    border: none;
+    border-radius: 0;
+    border-top: 1px rgba(0,0,0,.5) solid;
+    overflow-y: auto;
+    background-color: #222;
+    /*background-color: #5A6B7D;*/
+    bottom: 0;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+  }
+
+  .side-nav>li>a {
+    width: 225px;
+    border-bottom: 1px rgba(0,0,0,.3) solid;
+  }
+
+  .side-nav li a:hover,
+  .side-nav li a:focus {
+    outline: none;
+    background-color: #009688 !important;
+  }
+}
+
+.side-nav>li>ul {
+  padding: 0;
+  border-bottom: 2px rgba(0,0,0,.3) solid;
+}
+
+.side-nav>li>ul>li>a {
+  display: block;
+  padding: 10px 15px 10px 38px;
+  text-decoration: none;
+  /*color: #999;*/
+  color: #fff;    
+}
+
+.side-nav>li>ul>li>a:hover {
+  color: #fff;
+}
+
+#vav_color{
+  background-color: #009688;
+
+}
+
+#as_color{
+  background-color: #222D32;
+  text-decoration-color: #bdbdbd;
+
+}
+
+.nimag{
+  height: auto;
+  max-width: 90px;
+}
+
+
+#img1{
+  height: auto;
+  max-width: 80px;
+  margin:auto;
+
+}
+
+#img2{
+  height: 40px;
+  max-width: 40px;
+  display: block;
+  margin:auto;
+  position: absolute;
+  top: 10px;
+  left:10px;
+}
+
+#alt0{
+  text-align: right;
+  float: right;
+  width: 290px;
+  height: 30px;
+}
+
+#alt1{
+
+  width: 60px;
+  height:  60px;
+  background-color: #009688;
+}
+
+
+#alto{
+
+  width: 150px;
+  height:  60px;
+}
+
+
+#anli1{
+
+  width: 160px
+}
+
+#anli2{
+
+  width: 160px
+}
+
+#anli3{
+
+  width: 160px
+}
+
+#bgcl{
+  background-color:#A071BA;
+}
+
+.navbar .nav > li > a > .label {
+  background-color: #5c007a;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  top: 14px;
+  right: 6px;
+  font-size: 10px;
+  font-weight: normal;
+  min-width: 15px;
+  min-height: 15px;
+  line-height: 1.0em;
+  text-align: center;
+  padding: 2px;
+}
+
+.navbar .nav > li > a:hover > .label {
+  top: 10px;
+}
+
+.navbar-brand {
+  padding: 5px 15px;
+}
+
+
+footer{
+ background-color: #424558;
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ height: 35px;
+ text-align: center;
+ color: #CCC;
+}
+
+footer p {
+  float: center;
+  padding: 11px;
+  margin: 0px;
+  line-height: 100%;
+  line-height: 11px;
+
+}
+
+
+/* *********************Desde aqui estan los estilos del contenodo que puse en el dashboard**************** */
+/* *************************Se pueden borrar - se pueden borrar no pasana****************** */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+
+@media (min-width: 768px) {
+}
+
+.main .page-header {
+  margin-top: 0;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+ .placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+#padmain{
+  margin-left: 8%;
+}
+
+.bra-form{
+    width: 226px;
+    height: 60px;
+    background: #007D71;
+}
+
+/* ***********Hasta aqui estan los estilos del contenodo que puse en el dashboard***************** */

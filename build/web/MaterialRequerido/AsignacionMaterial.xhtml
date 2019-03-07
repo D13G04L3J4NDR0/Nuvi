@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+            <ui:define name="content">
+                
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="IdMaterialProyecto:" for="idMaterialProyecto" />
+                            <h:inputText id="idMaterialProyecto" value="#{crudMaterialesProyectoControler.materialesProyecto.idMaterialProyecto}" title="IdMaterialProyecto" required="true" requiredMessage="The IdMaterialProyecto field is required."/>
+                            <h:outputLabel value="CantidadMaterial:" for="cantidadMaterial" />
+                            <h:inputText id="cantidadMaterial" value="#{crudMaterialesProyectoControler.materialesProyecto.cantidadMaterial}" title="CantidadMaterial" />
+                            <h:outputLabel value="ValorUnitario:" for="valorUnitario" />
+                            <h:inputText id="valorUnitario" value="#{crudMaterialesProyectoControler.materialesProyecto.valorUnitario}" title="ValorUnitario" />
+                            <h:outputLabel value="Importe:" for="importe" />
+                            <h:inputText id="importe" value="#{crudMaterialesProyectoControler.materialesProyecto.importe}" title="Importe" />
+                            <h:outputLabel value="FkMaterial:" for="fkMaterial" />
+                            <h:selectOneMenu id="fkMaterial" value="#{crudMaterialesProyectoControler.materialesProyecto.fkMaterial}" title="FkMaterial" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="FkProyecto:" for="fkProyecto" />
+                            <h:selectOneMenu id="fkProyecto" value="#{crudMaterialesProyectoControler.materialesProyecto.fkProyecto}" title="FkProyecto" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

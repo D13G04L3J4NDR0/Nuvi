@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+
+            <ui:define name="content">
+                <div>
+                    <h3>Asignación de donaciones</h3>
+                    <p style="color: #009688">Seleccione el proyecto en el menú deplegable</p>
+                    <ul class="app-breadcrumb breadcrumb" style="text-align: right;">
+                        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                        <li class="breadcrumb-item"><a href="ListaDonaciones.xhtml">Lista de donaciones</a></li>
+                        <li class="breadcrumb-item">Asignación de donaciones</li>
+                    </ul>
+                </div>
+
+                <f:view>
+
+
+                    <h:form>
+                        <div class="col-md-12 col-sm-6 col-lg-6 sbForm">
+                            <div class="col-md-12 est-intput">
+                                <label for="valorDonacion">Valor de la donación :</label><br></br>
+                                <h:outputText id="valorDonacion" value="#{donacionControlador.donaciones.valorDonacion}" class="form-control" title="ValorDonacion" />
+                                <br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="imgComporbante">Imágen del comprobante :</label><br></br>
+                                <h:link id="imgComporbante" value="#{donacionControlador.donaciones.imgComporbante}" title="ImgComporbante"></h:link>
+                                <br></br>
+                            </div>
+                            <div class="col-md-12 est-intput">
+                                <label for="imgComporbante">Seleccione el proyecto</label><br></br>
+                                <p:selectOneMenu id="fkProyecto" value="#{donacionControlador.proyectos.idProyecto}" >
+                                    <f:selectItem itemValue="" itemLabel="Proyectos"/>
+                                    <f:selectItems value="#{proyectosControlador.listarProyecto()}" var="proyecto" itemValue="#{proyecto.idProyecto}" itemLabel="#{proyecto.codProyecto}"/>
+                                </p:selectOneMenu>
+                                <br></br>
+                            </div>
+                            <h:commandButton id="btnAsignarDonacion" class="est-btn-success" value="Confirmar" action="#{donacionControlador.editarDonacion()}" style=" width: 200px; height: 40px;"></h:commandButton>
+                        </div>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

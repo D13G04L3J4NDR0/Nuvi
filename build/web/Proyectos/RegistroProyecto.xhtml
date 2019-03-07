@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                <div class="app-title">
+                    <div>
+                        <h3>Registro del proyecto</h3>
+                        <p style="color: #009688">Ingrese los datos de registro de proyecto </p>
+                        <ul class="app-breadcrumb breadcrumb" style="text-align: right; ">
+                            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                            <li class="breadcrumb-item">Registro del proyecto</li>
+                        </ul>
+                    </div>                    
+                </div>
+
+                <f:view>
+                    <h:form>
+                        <p:growl autoUpdate="true"/>
+                        <p:messages id="messages" showDetail="true" closable="true">
+                        </p:messages>
+                        <div class="col-md-12 est-intput">
+                            <label for="codProyecto">Código de proyecto *</label><br></br>
+                            <h:inputText value="#{proyectosControlador.proyectos.codProyecto}" class="form-control" id="codProyecto" required="true" ></h:inputText><small class="form-text text-muted txt-Info">Ingrese el código de reconocimiento del proyecto</small><br></br><br></br>
+                        </div>
+                        <div class="col-md-12" >
+                            <label for="nombreProyecto">Nombre del Proyecto : *</label><br></br>
+                            <p:inputText id="nombreProyecto"  value="#{proyectosControlador.proyectos.nombreProyecto}" title="NombreProyecto" class="form-control" required="true"/><br></br>
+                        </div>
+                        <div  class="col-md-4 est-intput" >
+                            <label for="fechaInicioProyecto">Fecha Inicio del Proyecto : *</label><br></br>
+                            <p:calendar id="fechaInicioProyecto" value="#{proyectosControlador.proyectos.fechaInicioProyecto}" class="estInput" locale="es" required="true" requiredMessage=" Ingrese la fecha inicial del proyecto">
+                                <p:ajax event="dateSelect" update="fechaFinProyecto"/>
+                            </p:calendar>
+                        </div>
+                        <div  class="col-md-8 est-intput">
+                            <label for="fechaFinProyecto">Fecha Fin del Proyecto : *</label><br></br>
+                            <p:calendar id="fechaFinProyecto" value="#{proyectosControlador.proyectos.fechaFinProyecto}" mindate="#{proyectosControlador.proyectos.fechaInicioProyecto}" locale="es" required="true" requiredMessage=" Ingrese la fecha final del proyecto">
+                                <f:attribute name="fechaInicioProyecto" value="#{proyectosControlador.proyectos.fechaInicioProyecto}" />
+                            </p:calendar><br></br>   
+                        </div>
+                        <div class="col-md-4 est-intput" style="height: 60px">
+                            <label for="fkFamilia">Asignación de Familia : *</label>
+                            <h:selectOneMenu id="fkFamilia" value="#{proyectosControlador.familias.idFamilia}" class="form-control" >
+                                <f:selectItem  itemLabel="Familas"/>
+                                <f:selectItems value="#{familiaControlador.listarFamilias()}" var="familia" itemValue="#{familia.idFamilia}" itemLabel="#{familia.documCdeFamilia} #{familia.nombreCdeFamilia} #{familia.apellidoCdeFamilia}"/><br></br>
+                            </h:selectOneMenu><br></br>
+                        </div>
+                        <div class="col-md-8 est-intput">
+                            <label for="cantidadVoluntarios">Cantidad de voluntarios necesarios : *</label><br></br>
+                            <p:inputText id="cantidadVoluntarios" value="#{proyectosControlador.proyectos.cantidadVoluntarios}" class="form-control" title="CantidadVoluntarios"  maxlength="2"/><br></br>
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <label for="solucionProyecto">Detalle de la Solución : *</label><br></br>
+                            <p:inputTextarea id="solucionProyecto" class="form-control" value="#{proyectosControlador.proyectos.solucionProyecto}" title="SolucionProyecto" required="true" requiredMessage=" Ingrese la solucion del proyecto" /><br></br>
+                        </div>
+                        <div class="col-md-12 est-intput">
+                            <h:commandButton id="btnRegistrarProyecto" class="est-btn-success" value="Siguiente >>" action="#{proyectosControlador.registrarProyecto()}" style=" width: 200px; height: 40px;"></h:commandButton>
+                        </div>
+
+                    </h:form>          
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Editar Donación"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="IdDonador:" for="idDonador" />
+                            <p:inputText id="idDonador" value="#{donadorControlador.donador.idDonador}" title="IdDonador" required="true" requiredMessage="The IdDonador field is required."/>
+                            <p:outputLabel value="NombreDonador:" for="nombreDonador" />
+                            <p:inputText id="nombreDonador" value="#{donadorControlador.donador.nombreDonador}" title="NombreDonador" />
+                            <p:outputLabel value="DocuDonador:" for="docuDonador" />
+                            <p:inputText id="docuDonador" value="#{donadorControlador.donador.docuDonador}" title="DocuDonador" />
+                            <p:outputLabel value="ContacDonador:" for="contacDonador" />
+                            <p:inputText id="contacDonador" value="#{donadorControlador.donador.contacDonador}" title="ContacDonador" />
+                            <p:outputLabel value="EmailDonador:" for="emailDonador" />
+                            <p:inputText id="emailDonador" value="#{donadorControlador.donador.emailDonador}" title="EmailDonador" />
+                            <p:outputLabel value="DireccionResidencia:" for="direccionResidencia" />
+                            <p:inputText id="direccionResidencia" value="#{donadorControlador.donador.direccionResidencia}" title="DireccionResidencia" />
+                            <p:outputLabel value="CiudadResidencia:" for="ciudadResidencia" />
+                            <p:inputText id="ciudadResidencia" value="#{donadorControlador.donador.ciudadResidencia}" title="CiudadResidencia" />
+                            <p:outputLabel value="FkTipoDocum:" for="fkTipoDocum" />
+                            <p:selectOneMenu id="fkTipoDocum" value="#{donadorControlador.donador.fkTipoDocum}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                        <h:commandButton value="Editar" action="#{donadorControlador.editarDonador()}"/>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

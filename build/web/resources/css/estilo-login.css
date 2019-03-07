@@ -1,0 +1,116 @@
+body{
+	font-family: 'Raleway';
+	font-size: 16px;
+	font-weight: 300;
+	color: #fff;
+	line-height: 30px; /*intelineado*/
+	text-align: center;
+	background-color: #fff;
+}
+strong {
+	font-weight: 500;
+}
+a, a:hover, a:focus { /*Aplica para toda etiqueta de este tipo, hover:Mouse sobre el elemento; Focus: el elemento se encuentra seleccionado;*/
+	text-decoration: none;
+}
+h1, h2 {
+	margin-top: 10px;
+	font-size: 38px;
+	font-weight: 100;
+	line-height: 50px;
+}
+h3 {
+	font-size: 22px;
+	font-weight: 300;
+}
+.form-img{
+	height: 380px;
+	width: 350px;
+	border-radius: 15px 15px 15px 15px;
+	padding: 0px;
+}
+/*Contenidos y fomularios*/
+
+.micontenedor{
+    text-align: center;
+	padding:100px 0 0 0;
+}
+.midescripcion{
+	margin:20px 0 10px 0;
+}
+.micontenedor .midescripcion{
+	opacity: 0.8;
+}
+.mifondo-cont{
+	padding-top: 0px;
+	margin-top: 35px;
+}
+.mifondo-top{
+	overflow: hidden; /*Esconde todo objeto que no quepa en el formulario*/
+	padding: 0 25px 15px 25px;
+	background: rgba(170,127,255,0.35);
+	-webkit-border-radius:10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+}
+.miform-left p {
+	opacity: 0.8;
+}
+.miform-left{
+	float: left;
+	width: 75%;
+	padding-top: 25px;
+	text-align: left;
+}
+.miform-right{
+	float: right;
+	width: 25%;
+	padding-top: 25px;
+	font-size: 66px;
+	text-align: right;
+	opacity: 0.3;
+}
+.miform-abajo{
+	padding: 25px 25px 30px 25px;
+	background: rgba(170,127,255,0.3);
+	border-radius: 0 0 10px 10px;
+}
+.miform-abajo .mibtn {
+	width: 100%;
+}
+input[type="text"],
+input[type="password"],
+textarea,
+textarea.form-control{
+	height: 50px;
+	vertical-align: middle;
+	background:#fff;
+	border:3px solid #fff;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 50px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+textarea.form-control:focus{
+	background: #fff;
+	border: 2px solid #1AAE88;
+}
+button.mibtn{
+	height: 50px;
+	background: #1AAE88;
+	border: 0;
+	font-size: 30px;
+	font-weight: 500;
+	line-height: 40px;
+	color: #fff;
+	border-radius: 4px;
+}
+button.mibtn:hover, button.mibtn:active{
+	color: #fff;
+}
+button.mibtn:focus{
+	opacity: 0.6;
+	color: #fff;
+	background: #DE615E;
+}

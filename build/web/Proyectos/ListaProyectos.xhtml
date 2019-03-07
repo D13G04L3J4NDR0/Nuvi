@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                
+                <f:view>
+                    <h:form>
+                        <h:outputText value="Filtro de busqueda"></h:outputText>
+                        <h:inputText value="#{proyectosControlador.estado}"></h:inputText>
+                        <b:commandButton action="#{proyectosControlador.ir()}" style="background-color: #FFF"><img src="../resources/imagenes/find.png"/></b:commandButton>
+
+
+
+                        <p:dataTable id="tblProyectos" value="#{proyectosControlador.listarEstadoProyecto()}" var="item" emptyMessage="No se encontraron datos">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Código del proyecto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codProyecto}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre Proyecto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombreProyecto}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha Inicio del Proyecto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaInicioProyecto}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha Fin Proyecto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaFinProyecto}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Costo Material"/>
+                                </f:facet>
+                                <h:outputText value="#{item.costoMaterial}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Costo Personal"/>
+                                </f:facet>
+                                <h:outputText value="#{item.costoPersonal}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Costo Proyecto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.costoProyecto}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Cantidad Voluntarios"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cantidadVoluntarios}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Dinero Recaudado"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dineroRecaudado}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Estado Proyecto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.estadoProyecto}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

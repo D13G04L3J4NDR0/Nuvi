@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                <div class="app-title">
+                    <div>
+                        <h3>Asignación de costos</h3>
+                        <p style="color: #009688">Registre el costo unitario de los materiales </p>
+                        <ul class="app-breadcrumb breadcrumb" style="text-align: right; ">
+                            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                            <li class="breadcrumb-item">Asignación de costos</li>
+                        </ul>
+                    </div>                    
+                </div>
+                <div style="padding: 10px">
+                    <h:form>
+                        <div style="float: right">
+                            <b><p style="font-family: 'Heebo', sans-serif; size: 80px">Código del proyecto :</p></b>
+                            <div class="col-md-8">
+                                <h:inputText value="#{proyectosControlador.codigoProyecto}" class="form-control"/>
+                            </div>
+                            <div class="col-md-4">
+                                <b:commandButton action="#{proyectosControlador.ir()}" style="background-color: #FFF" rendered="true"><img src="../resources/imagenes/find.png"/></b:commandButton>
+                            </div>
+                        </div>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <h:panelGroup id="panel" layout="block" >
+                            <h:outputText value="Valor de la unidad del material  :"/>
+                            <p:inputText id="valor" value="#{proyectosControlador.valor}" title="Valor" /><br></br><br></br>
+
+                            <p:dataTable id="txtValor" value="#{proyectosControlador.listarMaterialesRequeridosDos()}" var="item" emptyMessage="No se encontraron datos">
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Material"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fkMaterial.nombreMaterial}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Cantidad"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.cantidadMaterial}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Valor Unidad"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.valorUnitario}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Valor Total"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.valorTotal}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Acciones"/>
+                                    </f:facet>
+                                    <b:commandButton  action="#{proyectosControlador.asignarCostodeMateriales(item)}" update="txtValor">
+                                        <img src="../resources/imagenes/add.png"></img>
+                                    </b:commandButton>
+                                </p:column>  
+                                <f:facet name="footer">
+                                    <label style="font-size: 30px">Total : </label>
+                                    <h:outputText id="lblTotal" value="#{proyectosControlador.resultado}" style="font-size: 40px" ></h:outputText>
+                                    <p:commandButton id="btnCalcular" value="Calcular" action="#{proyectosControlador.mostrarCostoTotal()}" style="margin-left: 100px" update="lblTotal" /><br></br>
+                                </f:facet>
+                            </p:dataTable>
+                            <br></br>
+                            <br></br>
+                        </h:panelGroup>
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

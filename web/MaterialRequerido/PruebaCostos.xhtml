@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:outputText value="Valor de la unidad del material  :"/>
+                <p:inputText id="valor" value="#{proyectosControlador.valor}" title="Valor" />
+                
+                <label>Total</label>
+                    <h:outputText value="#{proyectosControlador.total}" ></h:outputText>
+                <p:dataTable value="#{proyectosControlador.listarMaterialesRequeridosDos()}" var="item">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Material"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fkMaterial.nombreMaterial}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="CantidadMaterial"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cantidadMaterial}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Valor Unitario"/>
+                        </f:facet>
+                        <h:outputText value="#{item.valorUnitario}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Valor Total"/>
+                        </f:facet>
+                        <h:outputText value="#{item.valorTotal}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            
+                        </f:facet>
+                        <h:commandButton value="Agregar" image="../resources/imagenes/add.png" action="#{proyectosControlador.asignarCostodeMateriales(item)}"></h:commandButton>
+                    </p:column>
+                    
+                </p:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

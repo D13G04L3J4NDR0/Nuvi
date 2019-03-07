@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="NombrePersonal:" for="nombrePersonal" />
+                    <h:inputText id="nombrePersonal" value="#{personalControlador.personal.nombrePersonal}" title="NombrePersonal" />
+                    <h:outputLabel value="ApellidoPersonal:" for="apellidoPersonal" />
+                    <h:inputText id="apellidoPersonal" value="#{personalControlador.personal.apellidoPersonal}" title="ApellidoPersonal" />
+                    <h:outputLabel value="ProfesionPersonal:" for="profesionPersonal" />
+                    <h:inputText id="profesionPersonal" value="#{personalControlador.personal.profesionPersonal}" title="ProfesionPersonal" />
+                    <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{personalControlador.personal.fechaNacimiento}" title="FechaNacimiento" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="FechaIngreso:" for="fechaIngreso" />
+                    <h:inputText id="fechaIngreso" value="#{personalControlador.personal.fechaIngreso}" title="FechaIngreso" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="CategoriaPersonal:" for="categoriaPersonal" />
+                    <h:inputText id="categoriaPersonal" value="#{personalControlador.personal.categoriaPersonal}" title="CategoriaPersonal" />
+                    <h:outputLabel value="DocumPersonal:" for="documPersonal" />
+                    <h:inputText id="documPersonal" value="#{personalControlador.personal.documPersonal}" title="DocumPersonal" />
+                    <h:outputLabel value="ContacPersonal:" for="contacPersonal" />
+                    <h:inputText id="contacPersonal" value="#{personalControlador.personal.contacPersonal}" title="ContacPersonal" />
+                    
+                </h:panelGrid>
+                <h:commandButton action="#{personalControlador.registrarPersonal()}" value="Registrar   "/>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

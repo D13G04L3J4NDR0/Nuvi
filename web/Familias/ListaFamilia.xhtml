@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form id="formulario">
+                        <h1><h:outputText value="Lista de Familias"/></h1>
+                        <p:dataTable  id="tbl" value="#{familiaControlador.listarFamilias()}" var="item" paginator="true" rowsPerPageTemplate="5,10">
+                            <p:column filterBy="#{item.nombreCdeFamilia} #{item.idFamilia}">
+                        <f:facet name="header">
+                            <h:outputText value="IdFamilia"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idFamilia}"/>
+                    </p:column>
+                            
+                            <p:column filterBy="#{item.nombreCdeFamilia}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre Completo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombreCdeFamilia}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.documCdeFamilia}">
+                                <f:facet name="header">
+                                    <h:outputText value="Documento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.documCdeFamilia}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Integrantes"/>
+                                </f:facet>
+                                <h:outputText value="#{item.integrantesFamilia}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.barrioFamilia}">
+                                <f:facet name="header" >
+                                    <h:outputText value="Barrio"/>
+                                </f:facet>
+                                <h:outputText value="#{item.barrioFamilia}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Dirección"/>
+                                </f:facet>
+                                <h:outputText value="#{item.direccionFamilia}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.ciudadFamilia}">
+                                <f:facet name="header">
+                                    <h:outputText value="Ciudad"/>
+                                </f:facet>
+                                <h:outputText value="#{item.ciudadFamilia}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Tipo de Problematica"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkProblematica.problematica}"/>
+                            </p:column>
+                            <p:column exportable="false">
+                                <f:facet name="header">
+                                    <h:outputText value="Datos de Familia" />
+                                </f:facet> 
+                                <br></br> 
+                                <p:commandButton style="background-color: #0089db" id="btnConsultar" value="Ver"  title="Datos" action="#{familiaControlador.consultarFamilia(item)}"/>
+                                <br></br>
+                            </p:column>
+                            <p:column exportable="false">
+                                <f:facet name="header">
+                                    <h:outputText value="Actualizar" />
+                                </f:facet> 
+                                <br></br> 
+                                <p:commandButton style="background-color: gold" id="btnActualizar" value="Act" class="icon-pencil" title="Actualizar" action="#{familiaControlador.actualizarFamilia(item)}"/>
+                                <br></br>
+                            </p:column>
+                        </p:dataTable>
+
+                        <br></br>
+                        <h:commandLink>
+                            <p:graphicImage id="ExcelDown" value="../resources/imagenes/Icono_excel.png" style="width: 35px;"/>
+                            <p:dataExporter type="xls" target="tbl" pageOnly="true" fileName="Informacion de Familia" />
+                        </h:commandLink>
+                       
+                         <h:commandLink>
+                            <p:graphicImage id="PdfDown" value="../resources/imagenes/pdf.ico" style="width: 35px;"/>
+                            <p:dataExporter type="pdf" target="tbl" pageOnly="true" fileName="Informacion de Familia" />
+                        </h:commandLink>
+                        
+                        
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

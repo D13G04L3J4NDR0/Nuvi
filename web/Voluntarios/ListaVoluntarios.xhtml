@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+            
+            
+
+            <ui:define name="content">
+                <div>
+                    <h3>Asignación de voluntarios</h3>
+                    <p style="color: #009688">Seleccione el voluntario</p>
+                    <ul class="app-breadcrumb breadcrumb" style="text-align: right;">
+                        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                        <li class="breadcrumb-item">Asignación de voluntarios</li>
+                    </ul>
+                </div> 
+
+                <f:view>
+                    <h:form>
+                        <p:dataTable value="#{personalControlador.listarPersonal()}" id="tbl" var="item" paginator="true" rowKey="#{item.idPersonal}" rows="14" resizableColumns="true" selectionMode="single">
+                            <p:column sortBy="#{item.nombrePersonal}" filterBy="#{item.nombrePersonal}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombrePersonal} #{item.apellidoPersonal}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Profesión"/>
+                                </f:facet>
+                                <h:outputText value="#{item.profesionPersonal}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Documento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.documPersonal}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.disponibilidad}">
+                                <f:facet name="header">
+                                    <h:outputText value="Disponibilidad"/>
+                                </f:facet>
+                                <h:outputText value="#{item.disponibilidad}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Proyecto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkProyecto.nombreProyecto}"/>
+                            </p:column>
+                            <p:column style="width: 200px">
+                                <f:facet name="header">
+                                    <h:outputText value="Asignar Voluntarios"/>
+                                </f:facet> 
+                                <h:commandButton id="btnAsignarPersonal" class="btn btn-info" value="Asignar a Proyecto" action="#{personalControlador.actualizarPersonal(item)}"></h:commandButton>
+                            </p:column> 
+                        </p:dataTable>
+                        <l><strong>Descargar Excel</strong></l>
+                        <h:commandLink style="margin-left: 50px ">
+                            <p:graphicImage  id="excelDown" value="../resources/imagenes/Icono_excel.png" style="width: 35px; margin: 0px"/>
+                            <p:dataExporter type="csv" target="tbl" fileName="Lista de voluntarios"/>
+                        </h:commandLink>
+                    </h:form>
+                </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

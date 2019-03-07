@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+        <ui:composition template="../templates/template.xhtml">
+
+            <ui:define name="content">
+                <div>
+                    <h3>Lista de donaciones</h3>
+                    <p style="color: #009688">Seleccione la donación</p>
+                    <ul class="app-breadcrumb breadcrumb" style="text-align: right;">
+                        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                        <li class="breadcrumb-item">Asignación de donaciones</li>
+                    </ul>
+                </div>
+                <h:form>
+                    <p:dataTable id="tbl" value="#{donacionControlador.listarDonacion()}" var="item" paginator="true" rowKey="#{item.idDonacion}" rows="14">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Donador"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkDonador.nombreDonador}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Valor Donación"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorDonacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Imágen"/>
+                            </f:facet>
+                            <h:link value="#{item.imgComporbante}"></h:link>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Código del proyecto"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkProyecto.codProyecto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Asignar" />
+                            </f:facet> 
+                            <br></br> 
+                            <h:commandButton id="btnAsignarDonacion" class="est-btn-asignar" value="Asignar" action="#{donacionControlador.actualizarDonacion(item)}" style=" width: 200px; height: 40px;"></h:commandButton>
+                            <br></br>
+                        </p:column>
+
+
+                    </p:dataTable>
+                    <l><strong>Descargar Excel</strong></l>
+                    <h:commandLink style="margin-left: 50px ">
+                        <p:graphicImage  id="excelDown" value="../resources/imagenes/Icono_excel.png" style="width: 35px; margin: 0px"/>
+                        <p:dataExporter type="csv" target="tbl" fileName="Donadores"/>
+                    </h:commandLink>
+                </h:form>
+
+            </ui:define>
+
+
+
+        </ui:composition>
+    </body>
+</html>

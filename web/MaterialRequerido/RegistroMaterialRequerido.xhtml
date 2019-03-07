@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+       <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>
+       <h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head"/>
+       
+       <link href="../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+       <script src="../resources/js/bootstrap.js" type="text/javascript"></script>
+       <script src="../resources/js/Modulo.js" type="text/javascript"></script>
+       <link href="../resources/css/Modulo.css" rel="stylesheet" type="text/css"/>
+       
+    </h:head>
+    
+    <h:body>
+
+        <ui:composition template="../templates/template.xhtml">
+
+            <ui:define name="content">
+                
+
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="IdMaterial:" for="idMaterial" />
+                            <h:inputText id="idMaterial" value="#{crudMaterialesControlador.materiales.idMaterial}" title="IdMaterial" required="true" requiredMessage="The IdMaterial field is required."/>
+                            <h:outputLabel value="NombreMaterial:" for="nombreMaterial" />
+                            <h:inputText id="nombreMaterial" value="#{crudMaterialesControlador.materiales.nombreMaterial}" title="NombreMaterial" />
+                            <h:outputLabel value="UnidadMedida:" for="unidadMedida" />
+                            <h:inputText id="unidadMedida" value="#{crudMaterialesControlador.materiales.unidadMedida}" title="UnidadMedida" />
+                            <h:outputLabel value="Descripcion:" for="descripcion" />
+                            <h:inputText id="descripcion" value="#{crudMaterialesControlador.materiales.descripcion}" title="Descripcion" />
+                            <h:commandButton id="btnGuardarMat" value="Guardar" action="#{crudMaterialesControlador.registrarMaterial()}" style="margin-left: 10px; background-color: #008d4c "/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+                
+                
+                
+                <f:view>
+                <div>
+                    <section id="Material">
+                        <h2>Registro de Material</h2>
+                        <br></br>
+                            <br></br>
+                                <br></br>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            
+                                            <table id="JTable" class="table table-hover1" style="margin: auto; width:800px;" border="2" var="item" >
+                                                <thead style="background-color:rgb(3, 97, 88); color: white;">
+                                                    <th><h:outputLabel value="NombreMaterial:" for="nombreMaterial"/></th>
+                                                    <th><h:outputLabel value="UnidadMedida:" for="unidadMedida" /></th>
+                                                    <th><h:outputLabel value="Descripcion:" for="descripcion" /></th>
+                                                    <th>Opciones</th>
+                                                </thead>
+                                                <tbody id="tbody">
+                                                    <tr>
+                                                        <td><h:inputText id="nombreMaterial" value="#{crudMaterialesControlador.materiales.nombreMaterial}" title="NombreMaterial" /></td>
+                                                        <td><h:inputText id="unidadMedida" value="#{crudMaterialesControlador.materiales.unidadMedida}" title="UnidadMedida" /></td>
+                                                        <td><h:inputText id="descripcion" value="#{crudMaterialesControlador.materiales.descripcion}" title="Descripcion" /></td>
+                                                        <td>
+
+                                                            <h:commandButton id="btnGuardarMat" value="Guardar" action="#{crudMaterialesControlador.registrarMaterial()}" style="margin-left: 10px; background-color: #008d4c; color: #ffffff;"/>
+                                                              
+                                                            <h:commandButton id="btnEliminarMat" value="Elimnar" action="#{crudMaterialesControlador.eliminarMaterial(item)}" style="margin-left: 10px; background-color: #d33724; color: #ffffff"/>
+                               
+                                                          <!--  <h:commandButton id="btnAdicionarMat" value="Adicionar" action="#{crudMaterialesControlador.eliminarMaterial(item)}" style="margin-left: 8px; background-color: #FCD11F; color: #ffffff"/> -->
+                                                        </td>
+                                                        
+                                                     </tr>
+                                                </tbody>
+
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    </section>
+                                    </div>
+                                    <br></br>
+                                    <hr></hr>
+                                    <br></br>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+   </h:body>
+</html>

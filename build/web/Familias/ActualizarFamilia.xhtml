@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../templates/template.xhtml">
+            
+            
+
+            <ui:define name="content">
+                
+                <f:view>
+
+
+                    <h:form>
+                        <h2><h:outputText value="Actualizar Datos Familiares"/></h2><br></br>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="FechaVisita:" for="fechaVisita"/>
+                           <p:calendar id="fechaVisita"  value="#{familiaControlador.familia.fechaVisita}" title="FechaVisita"/>
+                            <p:outputLabel value="Nombre:" for="nombreCdeFamilia" />
+                            <p:inputText id="nombreCdeFamilia" value="#{familiaControlador.familia.nombreCdeFamilia}" title="NombreCdeFamilia" />
+                            <p:outputLabel value="Apellido:" for="apellidoCdeFamilia" />
+                            <p:inputText id="apellidoCdeFamilia" value="#{familiaControlador.familia.apellidoCdeFamilia}" title="ApellidoCdeFamilia" />
+                            <p:outputLabel value="Documento:" for="NDocumentoCdeFamilia" />
+                            <p:inputNumber id="NDocumentoCdeFamilia" value="#{familiaControlador.familia.documCdeFamilia}" title="NDocumentoCdeFamilia" />
+                            <p:outputLabel value="Integrantes:" for="NIntegrantesFamilia" />
+                            <p:inputText id="NIntegrantesFamilia" value="#{familiaControlador.familia.integrantesFamilia}" title="NIntegrantesFamilia" />
+                            <p:outputLabel value="Barrio:" for="barrioFamilia" />
+                            <p:inputText id="barrioFamilia" value="#{familiaControlador.familia.barrioFamilia}" title="BarrioFamilia" />
+                            <p:outputLabel value="Direccion:" for="direccionFamilia" />
+                            <p:inputText id="direccionFamilia" value="#{familiaControlador.familia.direccionFamilia}" title="DireccionFamilia" />
+                            <p:outputLabel value="Ciudad:" for="ciudadFamilia" />
+                            <p:inputText id="ciudadFamilia" value="#{familiaControlador.familia.ciudadFamilia}" title="CiudadFamilia" />
+                            <p:outputLabel value="TipoProblematica:" for="fkTipoProblematica" />
+                            <p:selectOneMenu id="fkTipoProblematica" value="#{familiaControlador.problematicas.idProblematica}">
+                                <f:selectItem itemValue="" itemLabel="Seleccion"/>
+                                <f:selectItems value="#{problematicaControlador.listarProblematicas()}" var="Problematica" itemValue="#{Problematica.idProblematica}" itemLabel="#{Problematica.problematica}"/> 
+                            </p:selectOneMenu>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <h:commandButton id="Actualizar" value="Actualizar" title="Actualizar" action="#{familiaControlador.editarFamilia()}" class="btn-success" style="padding: 8px;border-radius: 15px; width: 150px;margin-left: 20px;"/>
+                            <br></br>
+                            
+                            
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

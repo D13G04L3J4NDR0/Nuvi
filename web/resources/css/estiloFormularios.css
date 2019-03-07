@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Macondo|Monoton|Patrick+Hand|Permanent+Marker');
+.formulario{
+    background-color: #FBF7EC;
+    height: 800px;
+    width: 1130px;
+    padding: 0px;
+    padding-left: 40px;
+}
+.estLabel{
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 1px;
+    font-size: 20px;
+}
+.estInput{
+    width: 65%;
+}
+
+.mensaje{
+    padding: 500px; 
+}
+
+.estOutPut{
+    width: 95%;
+    font-family: 'Heebo', sans-serif;
+    font-size: 40px;
+    padding-left: 50px;
+}
+
+.est-intput{
+    margin-bottom: 15px;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #FFF;
+    border-color: #009688;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.txt-Info{
+    color: #009688;
+}
+
+.est-btn-success{
+    background-color: #009688;
+    color: #FFF;
+    border-radius: 5px;
+}
+
+.est-btn-asignar{
+    background-color: #FFA100;
+    color: #FFF;
+    border-radius: 5px;
+}
+
+.est-comp-panel{
+    width: 200px;
+    height: 80px;
+    margin: 10px;
+}
+
+.caja-tablero{
+    width: 300px;
+    height: 59px;
+    margin: 20px;
+    padding: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+    border-radius: 5px;
+}
+
+.titulo-caja-tablero{
+    background-color: #009688;
+    border-radius: 5px;    
+}
+.texto-caja-tablero{
+    padding-left: 20px;
+}
+
